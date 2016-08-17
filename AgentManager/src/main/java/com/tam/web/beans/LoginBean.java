@@ -27,6 +27,7 @@ public class LoginBean {
 	@ManagedProperty("#{userService}")
 	UserService userService;
 
+	
 	@PostConstruct
 	private void postConstruct() {
 		userName = "";
@@ -42,10 +43,10 @@ public class LoginBean {
 			}
 			User user= userService.loginUser(userName,password);
 			sessionBean.setUser(user);
-			return "main.xhtml?faces-redirect=true";
+			return "index.jsf?faces-redirect=true";
 		} catch (Exception e) {
 			sessionBean.setError("LOGIN", e.getMessage());
-			return "errorManagement.xhtml?faces-redirect=true";
+			return "errorManagement.jsf?faces-redirect=true";
 		}
 	}
 	
@@ -57,9 +58,9 @@ public class LoginBean {
 		return userName;
 	}
 
-	public void setUsername(String userName) {
+/*	public void setUsername(String userName) {
 		this.userName = userName;
-	}
+	}*/
 
 	public String getPassword() {
 		return password;
@@ -80,4 +81,6 @@ public class LoginBean {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+	
+
 }
